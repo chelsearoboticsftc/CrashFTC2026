@@ -20,13 +20,36 @@ public class SampleFlywheel extends LinearOpMode {
         double start;
         double ET;
 
+        double Vel;
+
+        Vel = 0;
+
         while (opModeIsActive()) {
 
-            if(gamepad1.aWasPressed()){
+            Flywheel.setMotorVelocity(Vel);
 
-            Flywheel.setMotorVelocity(2850);
+//            if(gamepad1.aWasPressed()){
+//
+//            Flywheel.setMotorVelocity(2850);
+//            }
+//
+//            if(gamepad1.yWasPressed()) {
+//                Flywheel.setMotorVelocity(2000);
+//            }
+//
+//            if(gamepad1.bWasPressed()) {
+//                Flywheel.setMotorVelocity(1520);
+//            }
+
+            if(gamepad1.right_trigger_pressed) {
+                Vel = Vel+100;
+                sleep(500);
             }
 
+            if(gamepad1.left_trigger_pressed) {
+                Vel = Vel-100;
+                sleep(500);
+            }
 
             if(gamepad1.xWasPressed()){
                 Flywheel.setMotorVelocity(0);
