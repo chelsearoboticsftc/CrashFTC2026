@@ -1,0 +1,39 @@
+package org.firstinspires.ftc.teamcode.TeleOps;
+
+import com.pedropathing.follower.Follower;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.pedro.Constants;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterSmart;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterConstantSmart;
+
+@TeleOp
+public class SampleFlywheel extends LinearOpMode {
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+        ShooterSmart Flywheel = new ShooterSmart(hardwareMap);
+        waitForStart();
+        double start;
+        double ET;
+
+        while (opModeIsActive()) {
+
+            if(gamepad1.aWasPressed()){
+
+            Flywheel.setMotorVelocity(2850);
+            }
+
+
+            if(gamepad1.xWasPressed()){
+                Flywheel.setMotorVelocity(0);
+            }
+
+            telemetry.addData("speed", Flywheel.getVelocity());
+                    telemetry.update();
+        }
+    }
+}
