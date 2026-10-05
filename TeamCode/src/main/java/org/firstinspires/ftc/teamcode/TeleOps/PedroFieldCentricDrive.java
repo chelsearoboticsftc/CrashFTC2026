@@ -12,14 +12,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
-import org.firstinspires.ftc.teamcode.Subsystems.ShooterSmart;
-
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Nectar;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Pollen;
 
 @TeleOp(name = "PFC Drive")
 public class PedroFieldCentricDrive extends OpMode {
 
     private Intake intake;
-    private ShooterSmart Flywheel;
+    private Shooter_Nectar Flywheel;
 
     private Follower follower;
 
@@ -38,7 +38,7 @@ public class PedroFieldCentricDrive extends OpMode {
     @Override
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
-                -gamepad1.left_stick_y,
+                gamepad1.left_stick_y,
                 gamepad1.left_stick_x,
                 gamepad1.right_stick_x,
                 follower.pose().heading()

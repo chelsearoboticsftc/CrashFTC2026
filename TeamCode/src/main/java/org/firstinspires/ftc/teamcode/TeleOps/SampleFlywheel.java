@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
-import org.firstinspires.ftc.teamcode.Subsystems.ShooterSmart;
 import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Nectar;
-import org.firstinspires.ftc.teamcode.pedro.Constants;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Nectar;
+import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterConstant_Nectar;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterConstant_Pollen;
 
