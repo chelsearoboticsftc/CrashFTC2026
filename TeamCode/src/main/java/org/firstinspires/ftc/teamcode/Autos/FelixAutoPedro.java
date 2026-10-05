@@ -4,9 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import static com.pedropathing.api.Paths.*;
 import com.pedropathing.paths.Path;
-import org.firstinspires.ftc.teamcode.OpModeStorage;
 import com.pedropathing.follower.Follower;
-import org.firstinspires.ftc.teamcode.pedro.Constants;
+import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.math.Pose;
 import com.pedropathing.ivy.Scheduler;
@@ -48,7 +47,7 @@ public class FelixAutoPedro extends OpMode {
     }
     @Override
     public void init() {
-        follower = Constants.create(hardwareMap);
+        follower = PedroConstants.create(hardwareMap);
         follower.setPose(startPose);
 
     }

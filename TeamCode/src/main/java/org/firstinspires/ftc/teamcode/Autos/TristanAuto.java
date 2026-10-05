@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.pedropathing.paths.Path;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import com.pedropathing.follower.Follower;
-import org.firstinspires.ftc.teamcode.pedro.Constants;
+import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.math.Pose;
 import com.pedropathing.ivy.Scheduler;
@@ -66,7 +66,7 @@ public class TristanAuto extends OpMode {
     @Override
     public void init() {
         Scheduler.reset();
-        follower = Constants.create(hardwareMap);
+        follower = PedroConstants.create(hardwareMap);
         follower.setPose(startPose);//sets the starting point of your Robot
         follower.update();
     }
@@ -82,7 +82,7 @@ public class TristanAuto extends OpMode {
 
     @Override
     public void stop() {
-        OpModeStorage.autonomousEndPose = follower.pose(); //saves your position in that file
+        OpModeStorage.autoEndPose = follower.pose(); //saves your position in that file
     }
 
 
