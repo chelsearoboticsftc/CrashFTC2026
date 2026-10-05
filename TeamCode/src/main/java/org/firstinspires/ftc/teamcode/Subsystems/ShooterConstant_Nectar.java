@@ -6,9 +6,10 @@ import org.firstinspires.ftc.teamcode.utils.LookupTable.Pair;
 
 import java.util.List;
 
-public class ShooterConstantSmart {
+public class ShooterConstant_Nectar{
     // Note - any changes to these constants will require recalibration!
-    public static final String MOTOR_NAME = "Flywheel";
+    public static final String MOTOR_NAME = "FlywheelNectar";
+    public static final String SERVO_NAME = "ServoNectar";
     public static final DcMotor.ZeroPowerBehavior ZERO_POWER_BEHAVIOR = DcMotor.ZeroPowerBehavior.BRAKE;
     public static final DcMotorSimple.Direction MOTOR_DIRECTION = DcMotorSimple.Direction.REVERSE;
     public static final double VELOCITY_P = 1.0;

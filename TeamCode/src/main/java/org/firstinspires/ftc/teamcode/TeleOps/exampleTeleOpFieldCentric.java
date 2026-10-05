@@ -37,9 +37,9 @@ public class exampleTeleOpFieldCentric extends OpMode {
                 follower.pose().heading()
         );
 
-        if(gamepad2.bWasPressed()){
+        if(gamepad2.aWasPressed()){
             intake.setMotorPower(1);
-        }if(gamepad2.backWasReleased()){
+        }if(gamepad2.aWasReleased()){
                 intake.setMotorPower(0);}
 
 
