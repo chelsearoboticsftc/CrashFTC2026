@@ -3,7 +3,12 @@ package org.firstinspires.ftc.teamcode.TeleOps;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Subsystems.ShooterNectar;
+import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Nectar;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Nectar;
+import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterConstant_Nectar;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterConstant_Pollen;
 
 
 @TeleOp
@@ -11,7 +16,7 @@ public class SampleFlywheel extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        ShooterNectar FlywheelNectar = new ShooterNectar(hardwareMap);
+        Shooter_Nectar FlywheelNectar = new Shooter_Nectar(hardwareMap);
         waitForStart();
         double start;
         double ET;
