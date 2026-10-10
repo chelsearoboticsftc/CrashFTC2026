@@ -2,51 +2,43 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoControllerEx;
 
 import org.firstinspires.ftc.teamcode.utils.LookupTable;
 
-public class ShooterPollen {
+public class Shooter_Pollen {
 
     //Example declare a DcMotorEx object as part of this class called 'motorName'
-    DcMotorEx ShooterPollenFly;
-    Servo GatePollen;
+    DcMotorEx Flywheel;
+    ServoControllerEx Gate;
 
     //Declare any other global variables for this class here
-<<<<<<< Updated upstream:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Subsystems/Shooter_Pollen.java
     private final LookupTable distanceToVelocity = new LookupTable(ShooterConstant_Pollen.LOOKUP_TABLE);
 
     public Shooter_Pollen(HardwareMap hardwareMap){
         this.Flywheel = hardwareMap.get(DcMotorEx.class, ShooterConstant_Pollen.MOTOR_NAME);
         this.Gate = hardwareMap.get(ServoControllerEx.class, ShooterConstant_Pollen.SERVO_NAME);
-=======
-    private final LookupTable distanceToVelocity = new LookupTable(ShooterConstantPollen.LOOKUP_TABLE);
->>>>>>> Stashed changes:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Subsystems/ShooterPollen.java
 
-    public ShooterPollen(HardwareMap hardwareMap){
-        this.ShooterPollenFly = hardwareMap.get(DcMotorEx.class, ShooterConstantPollen.MOTOR_NAME);
-        this.GatePollen = hardwareMap.get(Servo.class, ShooterConstantNectar.SERVO_NAME);
         //This defines the behavior at zero power (brake or coast)
-        ShooterPollenFly.setZeroPowerBehavior(ShooterConstantPollen.ZERO_POWER_BEHAVIOR);
+        Flywheel.setZeroPowerBehavior(ShooterConstant_Pollen.ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
-        ShooterPollenFly.setDirection(ShooterConstantPollen.MOTOR_DIRECTION);
+        Flywheel.setDirection(ShooterConstant_Pollen.MOTOR_DIRECTION);
 
         /* This defines the motor velocity PIDF gains.  Velocity PIDF values determine control    *
          * around a target velocity (setTargetVelocity) OR how fast the system responds to a      *
          * change in set position (setTargetPosition).                                            */
-        ShooterPollenFly.setVelocityPIDFCoefficients(
-                ShooterConstantPollen.VELOCITY_P, //Proportional Gain
-                ShooterConstantPollen.VELOCITY_I, //Integral Gain
-                ShooterConstantPollen.VELOCITY_D, //Derivative Gain
-                ShooterConstantPollen.VELOCITY_F);//Feed Forward Gain
+        Flywheel.setVelocityPIDFCoefficients(
+                ShooterConstant_Pollen.VELOCITY_P, //Proportional Gain
+                ShooterConstant_Pollen.VELOCITY_I, //Integral Gain
+                ShooterConstant_Pollen.VELOCITY_D, //Derivative Gain
+                ShooterConstant_Pollen.VELOCITY_F);//Feed Forward Gain
 
         /* This defines the motor position PID P gain. Position control only needs P gain since   *
          * once the system reaches the target position since once at position you're only         *
          * disturbances in the system                                                             */
-        ShooterPollenFly.setPositionPIDFCoefficients(
-                ShooterConstantPollen.POSITION_P);//Proportional Gain
+        Flywheel.setPositionPIDFCoefficients(
+                ShooterConstant_Pollen.POSITION_P);//Proportional Gain
 
         //motorName.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -74,14 +66,10 @@ public class ShooterPollen {
     }
 
     public double getVelocity() {
-      return ShooterPollenFly.getVelocity();
+      return Flywheel.getVelocity();
     }
 
     public void setMotorVelocity(double angularRate) {
-        this.ShooterPollenFly.setVelocity(angularRate);
-    }
-
-    public void setGatePollenPos(double pos) {
-        GatePollen.setPosition(pos);
+        this.Flywheel.setVelocity(angularRate);
     }
 }

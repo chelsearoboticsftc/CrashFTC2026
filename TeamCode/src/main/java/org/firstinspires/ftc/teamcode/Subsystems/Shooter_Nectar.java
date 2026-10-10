@@ -2,44 +2,43 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoControllerEx;
 
 import org.firstinspires.ftc.teamcode.utils.LookupTable;
 
-public class ShooterNectar {
+public class Shooter_Nectar {
 
     //Example declare a DcMotorEx object as part of this class called 'motorName'
-    DcMotorEx ShooterNectarFly;
-    Servo GateNectar;
+    DcMotorEx Flywheel;
+    ServoControllerEx Gate;
 
     //Declare any other global variables for this class here
-    private final LookupTable distanceToVelocity = new LookupTable(ShooterConstantNectar.LOOKUP_TABLE);
+    private final LookupTable distanceToVelocity = new LookupTable(ShooterConstant_Nectar.LOOKUP_TABLE);
 
-    public ShooterNectar(HardwareMap hardwareMap){
-        this.ShooterNectarFly = hardwareMap.get(DcMotorEx.class, ShooterConstantNectar.MOTOR_NAME);
-        this.GateNectar = hardwareMap.get(Servo.class, ShooterConstantNectar.SERVO_NAME);
+    public Shooter_Nectar(HardwareMap hardwareMap){
+        this.Flywheel = hardwareMap.get(DcMotorEx.class, ShooterConstant_Nectar.MOTOR_NAME);
+        this.Gate = hardwareMap.get(ServoControllerEx.class, ShooterConstant_Nectar.SERVO_NAME);
 
         //This defines the behavior at zero power (brake or coast)
-        ShooterNectarFly.setZeroPowerBehavior(ShooterConstantNectar.ZERO_POWER_BEHAVIOR);
+        Flywheel.setZeroPowerBehavior(ShooterConstant_Nectar.ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
-        ShooterNectarFly.setDirection(ShooterConstantNectar.MOTOR_DIRECTION);
+        Flywheel.setDirection(ShooterConstant_Nectar.MOTOR_DIRECTION);
 
         /* This defines the motor velocity PIDF gains.  Velocity PIDF values determine control    *
          * around a target velocity (setTargetVelocity) OR how fast the system responds to a      *
          * change in set position (setTargetPosition).                                            */
-        ShooterNectarFly.setVelocityPIDFCoefficients(
-                ShooterConstantNectar.VELOCITY_P, //Proportional Gain
-                ShooterConstantNectar.VELOCITY_I, //Integral Gain
-                ShooterConstantNectar.VELOCITY_D, //Derivative Gain
-                ShooterConstantNectar.VELOCITY_F);//Feed Forward Gain
+        Flywheel.setVelocityPIDFCoefficients(
+                ShooterConstant_Nectar.VELOCITY_P, //Proportional Gain
+                ShooterConstant_Nectar.VELOCITY_I, //Integral Gain
+                ShooterConstant_Nectar.VELOCITY_D, //Derivative Gain
+                ShooterConstant_Nectar.VELOCITY_F);//Feed Forward Gain
 
         /* This defines the motor position PID P gain. Position control only needs P gain since   *
          * once the system reaches the target position since once at position you're only         *
          * disturbances in the system                                                             */
-        ShooterNectarFly.setPositionPIDFCoefficients(
-                ShooterConstantNectar.POSITION_P);//Proportional Gain
+        Flywheel.setPositionPIDFCoefficients(
+                ShooterConstant_Nectar.POSITION_P);//Proportional Gain
 
         //motorName.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -68,14 +67,10 @@ public class ShooterNectar {
     }
 
     public double getVelocity() {
-      return ShooterNectarFly.getVelocity();
+      return Flywheel.getVelocity();
     }
 
     public void setMotorVelocity(double angularRate) {
-        this.ShooterNectarFly.setVelocity(angularRate);
-    }
-
-    public void setGateNectarPos(double pos) {
-        GateNectar.setPosition(pos);
+        this.Flywheel.setVelocity(angularRate);
     }
 }
