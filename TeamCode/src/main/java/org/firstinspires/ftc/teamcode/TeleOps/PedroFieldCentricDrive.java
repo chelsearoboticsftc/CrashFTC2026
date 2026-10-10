@@ -34,23 +34,24 @@ public class PedroFieldCentricDrive extends OpMode {
     public void init() {
         follower = PedroConstants.create(hardwareMap);
         intake = new Intake(hardwareMap);
+        ShooterPollenFly = new ShooterPollen(hardwareMap);
     }
 
     @Override
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
-                gamepad1.left_stick_y,
-                gamepad1.left_stick_x,
+                -gamepad1.left_stick_y,
+                -gamepad1.left_stick_x,
                 gamepad1.right_stick_x,
                 follower.pose().heading()
         );
         follower.manual(powers);
         follower.update();
         // relocalise button
-        if (gamepad1.startWasPressed()) {
-            Pose cornerPose = new Pose(10.5, 10.5, Math.toRadians(90));
+        //if (gamepad1.startWasPressed()) {
+            //Pose cornerPose = new Pose(0, 0, Math.toRadians(90));
             // On the fly Pose creation, Only accepts radians for heading
-            follower.setPose(cornerPose); // overrides our pose
+        //follower.setPose(cornerPose); // overrides our pose
 
             Pose robotPose = follower.pose(); // returns a Pose object
             telemetry.addData("Robot X", robotPose.x());
@@ -84,7 +85,7 @@ public class PedroFieldCentricDrive extends OpMode {
                 Shooterd = false;
             }
             if (Shooterd = true) {
-                ShooterPollenFly.setMotorVelocity(2000);
+                ShooterPollenFly.setMotorVelocity(1100);
                 GatePollen.setGatePollenPos(2850);
             }
             if (Shooterd = false) {
@@ -97,4 +98,3 @@ public class PedroFieldCentricDrive extends OpMode {
 
         }
     }
-}

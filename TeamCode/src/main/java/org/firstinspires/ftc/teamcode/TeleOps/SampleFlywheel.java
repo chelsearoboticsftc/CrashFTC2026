@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterNectar;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
 
 
 @TeleOp
@@ -11,7 +12,7 @@ public class SampleFlywheel extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        ShooterNectar FlywheelNectar = new ShooterNectar(hardwareMap);
+        ShooterPollen FlywheelPollen = new ShooterPollen(hardwareMap);
         waitForStart();
         double start;
         double ET;
@@ -22,7 +23,7 @@ public class SampleFlywheel extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            FlywheelNectar.setMotorVelocity(Vel);
+            FlywheelPollen.setMotorVelocity(Vel);
 
 //            if(gamepad1.aWasPressed()){
 //
@@ -37,21 +38,21 @@ public class SampleFlywheel extends LinearOpMode {
 //                Flywheel.setMotorVelocity(1520);
 //            }
 
-            if(gamepad1.right_trigger_pressed) {
-                Vel = Vel+100;
-                sleep(500);
+            if(gamepad1.bWasPressed()) {
+                Vel = Vel+1200;
+
             }
 
-            if(gamepad1.left_trigger_pressed) {
+            if(gamepad1.yWasPressed()) {
                 Vel = Vel-100;
                 sleep(500);
             }
 
             if(gamepad1.xWasPressed()){
-                FlywheelNectar.setMotorVelocity(0);
+                FlywheelPollen.setMotorVelocity(0);
             }
 
-            telemetry.addData("speed", FlywheelNectar.getVelocity());
+            telemetry.addData("speed", FlywheelPollen.getVelocity());
                     telemetry.update();
         }
     }

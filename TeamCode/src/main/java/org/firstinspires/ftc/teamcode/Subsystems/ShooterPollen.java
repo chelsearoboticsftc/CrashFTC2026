@@ -10,26 +10,26 @@ import org.firstinspires.ftc.teamcode.utils.LookupTable;
 public class ShooterPollen {
 
     //Example declare a DcMotorEx object as part of this class called 'motorName'
-    DcMotorEx ShooterPollenFly;
-    Servo GatePollen;
+    DcMotorEx FlywheelPollen;
+    Servo ServoPollen;
 
     //Declare any other global variables for this class here
     private final LookupTable distanceToVelocity = new LookupTable(ShooterConstantPollen.LOOKUP_TABLE);
 
     public ShooterPollen(HardwareMap hardwareMap){
-        this.ShooterPollenFly = hardwareMap.get(DcMotorEx.class, ShooterConstantPollen.MOTOR_NAME);
-        this.GatePollen = hardwareMap.get(Servo.class, ShooterConstantPollen.SERVO_NAME);
+        this.FlywheelPollen = hardwareMap.get(DcMotorEx.class, ShooterConstantPollen.MOTOR_NAME);
+        this.ServoPollen = hardwareMap.get(Servo.class, ShooterConstantPollen.SERVO_NAME);
 
         //This defines the behavior at zero power (brake or coast)
-        ShooterPollenFly.setZeroPowerBehavior(ShooterConstantPollen.ZERO_POWER_BEHAVIOR);
+        FlywheelPollen.setZeroPowerBehavior(ShooterConstantPollen.ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
-        ShooterPollenFly.setDirection(ShooterConstantPollen.MOTOR_DIRECTION);
+        FlywheelPollen.setDirection(ShooterConstantPollen.MOTOR_DIRECTION);
 
         /* This defines the motor velocity PIDF gains.  Velocity PIDF values determine control    *
          * around a target velocity (setTargetVelocity) OR how fast the system responds to a      *
          * change in set position (setTargetPosition).                                            */
-        ShooterPollenFly.setVelocityPIDFCoefficients(
+        FlywheelPollen.setVelocityPIDFCoefficients(
                 ShooterConstantPollen.VELOCITY_P, //Proportional Gain
                 ShooterConstantPollen.VELOCITY_I, //Integral Gain
                 ShooterConstantPollen.VELOCITY_D, //Derivative Gain
@@ -38,7 +38,7 @@ public class ShooterPollen {
         /* This defines the motor position PID P gain. Position control only needs P gain since   *
          * once the system reaches the target position since once at position you're only         *
          * disturbances in the system                                                             */
-        ShooterPollenFly.setPositionPIDFCoefficients(
+        FlywheelPollen.setPositionPIDFCoefficients(
                 ShooterConstantPollen.POSITION_P);//Proportional Gain
 
         //motorName.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -67,14 +67,14 @@ public class ShooterPollen {
     }
 
     public double getVelocity() {
-      return ShooterPollenFly.getVelocity();
+      return FlywheelPollen.getVelocity();
     }
 
     public void setMotorVelocity(double angularRate) {
-        this.ShooterPollenFly.setVelocity(angularRate);
+        this.FlywheelPollen.setVelocity(angularRate);
     }
 
     public void setGatePollenPos(double pos) {
-        GatePollen.setPosition(pos);
+        ServoPollen.setPosition(pos);
     }
 }
