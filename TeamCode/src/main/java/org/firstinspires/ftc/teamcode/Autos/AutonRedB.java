@@ -24,39 +24,33 @@ public class AutonRedB extends OpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(111.7105, 4.0922, 90);
-    private final Pose path1 = poseFactory.of(109.0625, 15.5197, 90);
-    private final Pose point2 = poseFactory.of(55.4293, 15.9013, 90);
-    private final Pose point3 = poseFactory.of(56.7993, 33.5197, 90);
-    private final Pose point4 = poseFactory.of(4.9737, 103.7566, -86.2324);
-    private final Pose point4Control1 = poseFactory.of(9.2796, 34.7484, 0);
+    private final Pose start = poseFactory.of(8.523, 34.9967, 90);
+    private final Pose path1 = poseFactory.of(60.6546, 9.0033, 90);
+    private final Pose path2 = poseFactory.of(30.472, 45.4836, 90);
+    private final Pose path3 = poseFactory.of(13.4062, 97.648, 90);
+    private final Pose point3Control1 = poseFactory.of(5.0066, 72.9523, 0);
 
-
-
-    public Path path1() {
-        return Paths.line(start, path1).constant(path1);
-    }
-
-    public Path path2() {
-        return Paths.line(path1, point2).constant(point2);
-    }
-
-    public Path path3() {
-        return Paths.curve(point2, point3).constant(point3);
-    }
-    public Path path4() {
-        return Paths.curve(point3, point4Control1, point4).reverseTangent();
-    }
-    private Command autoRoutine() {
+    // Autonomous routine
+    public Command autoRoutine() {
         return sequential(
                 follow(follower, path1()),
                 follow(follower, path2()),
-                follow(follower, path3()),
-                follow(follower, path4())
-                // Add mechanism commands here.
-
+                follow(follower, path3())
         );
     }
+
+
+        public Path path1() {
+            return Paths.line(start, path1).constant(path1);
+        }
+
+        public Path path2() {
+            return Paths.line(path1, path2).constant(path2);
+        }
+
+        public Path path3() {
+            return Paths.curve(path2, point3Control1, path3).constant(path3);
+        }
 
     @Override
     public void init() {
@@ -79,7 +73,8 @@ public class AutonRedB extends OpMode {
     public void stop() {
         OpModeStorage.autoEndPose = follower.pose(); //saves your position in that file
     }
+    }
 
 
 
-}
+
