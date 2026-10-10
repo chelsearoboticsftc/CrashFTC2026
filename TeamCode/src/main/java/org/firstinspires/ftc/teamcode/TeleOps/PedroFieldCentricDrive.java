@@ -7,20 +7,22 @@ import com.pedropathing.math.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
-import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Nectar;
-import org.firstinspires.ftc.teamcode.Subsystems.Shooter_Pollen;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterNectar;
+
+
 
 @TeleOp(name = "PFC Drive")
 public class PedroFieldCentricDrive extends OpMode {
 
     private Intake intake;
-    private Shooter_Nectar Flywheel;
-
+    private ShooterNectar ShooterNectarFly;
+    private ShooterNectar GateNectar;
+    private ShooterPollen ShooterPollenFly;
+    private ShooterPollen GatePollen;
     private Follower follower;
 
     @Override
@@ -71,9 +73,29 @@ public class PedroFieldCentricDrive extends OpMode {
 
             if (Intaked = false) {
                 intake.setMotorPower(0);
-
-
             }
+
+            // Shooter stuff
+
+            boolean Shooterd;
+            if (gamepad2.yWasPressed()) {
+                Shooterd = true;
+            }
+            if (gamepad2.yWasReleased()) {
+                Shooterd = false;
+            }
+            if (Shooterd = true) {
+                ShooterPollenFly.setMotorVelocity(2000);
+                GatePollen.setGatePollenPos(2850);
+            }
+            if (Shooterd = false) {
+                ShooterPollenFly.setMotorVelocity(200);
+                GatePollen.setGatePollenPos(0);
+            }
+
+            // Stuff for later stuff
+
+
         }
     }
 }
