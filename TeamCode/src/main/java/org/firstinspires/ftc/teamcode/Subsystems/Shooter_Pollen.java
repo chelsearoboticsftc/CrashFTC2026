@@ -17,6 +17,7 @@ public class Shooter_Pollen {
 
     public Shooter_Pollen(HardwareMap hardwareMap){
         this.Flywheel = hardwareMap.get(DcMotorEx.class, ShooterConstant_Pollen.MOTOR_NAME);
+        this.Gate = hardwareMap.get(ServoControllerEx.class, ShooterConstant_Pollen.SERVO_NAME);
 
         //This defines the behavior at zero power (brake or coast)
         Flywheel.setZeroPowerBehavior(ShooterConstant_Pollen.ZERO_POWER_BEHAVIOR);
