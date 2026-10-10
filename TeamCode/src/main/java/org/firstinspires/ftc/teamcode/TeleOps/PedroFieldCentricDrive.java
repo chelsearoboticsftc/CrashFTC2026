@@ -35,6 +35,7 @@ public class PedroFieldCentricDrive extends OpMode {
         follower = PedroConstants.create(hardwareMap);
         intake = new Intake(hardwareMap);
         ShooterPollenFly = new ShooterPollen(hardwareMap);
+        GatePollen = new ShooterPollen(hardwareMap);
     }
 
     @Override
@@ -78,10 +79,11 @@ public class PedroFieldCentricDrive extends OpMode {
             // Shooter stuff
 
             boolean Shooterd;
+            Shooterd = false;
             if (gamepad2.yWasPressed()) {
                 Shooterd = true;
             }
-            if (gamepad2.yWasReleased()) {
+            if (gamepad2.xWasPressed()) {
                 Shooterd = false;
             }
             if (Shooterd = true) {
