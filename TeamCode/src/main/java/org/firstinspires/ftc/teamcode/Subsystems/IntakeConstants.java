@@ -7,7 +7,7 @@ public class IntakeConstants {
     //Add subsystem constants here.  Use this to avoid magic numbers
     public static final int INTAKE_THRESHOLD = 5;
     public static final DcMotor.ZeroPowerBehavior INTAKE_ZERO_POWER_BEHAVIOR = DcMotor.ZeroPowerBehavior.BRAKE;
-    public static final DcMotorSimple.Direction INTAKE_DIRECTION = DcMotorSimple.Direction.REVERSE;
+    public static final DcMotorSimple.Direction INTAKE_DIRECTION = DcMotorSimple.Direction.FORWARD;
     public static final double INTAKE_VELOCITY_P = 1.0;
     public static final double INTAKE_VELOCITY_I = 0.0;
     public static final double INTAKE_VELOCITY_D = 0.0;

@@ -12,11 +12,13 @@ import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterNectar;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
+import org.firstinspires.ftc.teamcode.Subsystems.IntakeB;
 
 @TeleOp(name = "PFC Drive")
 public class PedroFieldCentricDrive extends OpMode {
 
     private Intake intake;
+    private IntakeB intakeb;
     private ShooterNectar Flywheel;
     private ShooterNectar ShooterNectarFly;
     private ShooterNectar GateNectar;
@@ -61,39 +63,34 @@ public class PedroFieldCentricDrive extends OpMode {
 
             // Intake stuff
 
-            boolean Intaked;
+
             if (gamepad2.aWasPressed()) {
-                Intaked = true;
+                intake.setMotorPower(-1);
+                intakeb.setMotorPower(-1);
             }
+
             if (gamepad2.aWasReleased()) {
-                Intaked = false;
-            }
-            if (Intaked = true) {
-                intake.setMotorPower(1);
-            }
-
-            if (Intaked = false) {
                 intake.setMotorPower(0);
+                intakeb.setMotorPower(0);
             }
-
             // Shooter stuff
 
-            boolean Shooterd;
-            Shooterd = false;
+
             if (gamepad2.yWasPressed()) {
-                Shooterd = true;
+                ShooterPollenFly.setMotorVelocity(2200);
+
             }
-            if (gamepad2.xWasPressed()) {
-                Shooterd = false;
+
+            if (gamepad2.yWasReleased()) {
+                ShooterPollenFly.setMotorVelocity(0);
             }
-            if (Shooterd = true) {
-                ShooterPollenFly.setMotorVelocity(1100);
-                GatePollen.setGatePollenPos(2850);
-            }
-            if (Shooterd = false) {
-                ShooterPollenFly.setMotorVelocity(200);
-                GatePollen.setGatePollenPos(0);
-            }
+
+//            if (gamepad2.xWasPressed()) {
+//                //ShooterPollenFly.setMotorVelocity(200);
+//                GatePollen.setGatePollenPos(2850);
+//                //setGatePollenPos(0);
+//            }
+//
 
             // Stuff for later stuff
 
