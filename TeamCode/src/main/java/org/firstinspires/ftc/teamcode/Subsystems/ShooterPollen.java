@@ -12,6 +12,7 @@ public class ShooterPollen {
     //Example declare a DcMotorEx object as part of this class called 'motorName'
     DcMotorEx FlywheelPollen;
     Servo ServoPollen;
+    double ServoPose;
 
     //Declare any other global variables for this class here
     private final LookupTable distanceToVelocity = new LookupTable(ShooterConstantPollen.LOOKUP_TABLE);
@@ -76,5 +77,12 @@ public class ShooterPollen {
 
     public void setGatePollenPos(double pos) {
         ServoPollen.setPosition(pos);
+        ServoPose = pos;
+
     }
+
+    public double getGatePollenPos(){
+        return ServoPose; }
+
 }
+

@@ -23,21 +23,24 @@ public class PedroFieldCentricDrive extends OpMode {
     private ShooterNectar ShooterNectarFly;
     private ShooterNectar GateNectar;
     private ShooterPollen ShooterPollenFly;
-    private ShooterPollen GatePollen;
+
+   double GatePollenPos;
     private Follower follower;
 
     @Override
     public void start() {
         follower.setPose(OpModeStorage.autoEndPose);
         follower.update();
+        GatePollenPos = 0;
     }
 
     @Override
     public void init() {
         follower = PedroConstants.create(hardwareMap);
         intake = new Intake(hardwareMap);
+        intakeb = new IntakeB(hardwareMap);
         ShooterPollenFly = new ShooterPollen(hardwareMap);
-        GatePollen = new ShooterPollen(hardwareMap);
+
     }
 
     @Override
@@ -60,7 +63,7 @@ public class PedroFieldCentricDrive extends OpMode {
             telemetry.addData("Robot X", robotPose.x());
             telemetry.addData("Robot Y", robotPose.y());
             telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
-
+            telemetry.addData("Servo Position", ShooterPollenFly.getGatePollenPos());
             // Intake stuff
 
 
@@ -84,7 +87,20 @@ public class PedroFieldCentricDrive extends OpMode {
             if (gamepad2.yWasReleased()) {
                 ShooterPollenFly.setMotorVelocity(0);
             }
+            if (gamepad2.dpadRightWasPressed()) {
+                ShooterPollenFly.setGatePollenPos(0.8);
+            }
+//            if (gamepad2.dpadUpWasPressed()) {
+//            ShooterPollenFly.setGatePollenPos(0.2);
+//            }
+            if (gamepad2.dpadLeftWasPressed()) {
+            ShooterPollenFly.setGatePollenPos(0.5);
+        }
+//            if (gamepad2.dpadDownWasPressed()) {
+//            ShooterPollenFly.setGatePollenPos(0.7);
+//        }
 
+            //ShooterPollenFly.setGatePollenPos();
 //            if (gamepad2.xWasPressed()) {
 //                //ShooterPollenFly.setMotorVelocity(200);
 //                GatePollen.setGatePollenPos(2850);
