@@ -84,6 +84,8 @@ Any Poses between them are control points that change the shape of the curve.
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
         shooter = new ShooterPollen(hardwareMap);
+        intake = new Intake(hardwareMap);
+        GatePollen = new ShooterPollen(hardwareMap);
 
     }
     @Override
