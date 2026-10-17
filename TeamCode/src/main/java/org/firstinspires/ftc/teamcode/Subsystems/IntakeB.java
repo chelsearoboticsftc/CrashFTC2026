@@ -29,25 +29,25 @@ public class IntakeB {
         this.IntakeB = hardwareMap.get(DcMotorEx.class,"IntakeB");
 
         //This defines the behavior at zero power (brake or coast)
-        IntakeB.setZeroPowerBehavior(SampleSubsystemConstants.MOTOR_NAME_ZERO_POWER_BEHAVIOR);
+        IntakeB.setZeroPowerBehavior(IntakeBConstants.INTAKE_ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
-      IntakeB.setDirection(SampleSubsystemConstants.MOTOR_NAME_DIRECTION);
+      IntakeB.setDirection(IntakeBConstants.INTAKE_DIRECTION);
 
         /* This defines the motor velocity PIDF gains.  Velocity PIDF values determine control    *
          * around a target velocity (setTargetVelocity) OR how fast the system responds to a      *
          * change in set position (setTargetPosition).                                            */
         IntakeB.setVelocityPIDFCoefficients(
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_P, //Proportional Gain
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_I, //Integral Gain
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_D, //Derivative Gain
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_F);//Feed Forward Gain
+                IntakeBConstants.INTAKE_POSITION_P, //Proportional Gain
+                IntakeBConstants.INTAKE_VELOCITY_I, //Integral Gain
+                IntakeBConstants.INTAKE_VELOCITY_D, //Derivative Gain
+                IntakeBConstants.INTAKE_VELOCITY_F);//Feed Forward Gain
 
         /* This defines the motor position PID P gain. Position control only needs P gain since   *
          * once the system reaches the target position since once at position you're only         *
          * disturbances in the system                                                             */
         IntakeB.setPositionPIDFCoefficients(
-                SampleSubsystemConstants.MOTOR_NAME_POSITION_P);//Proportional Gain
+                IntakeBConstants.INTAKE_POSITION_P);//Proportional Gain
 
         //motorName.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -73,7 +73,7 @@ public class IntakeB {
 
         //Call setTargetPositionTolerance to tell REV controller how close to the target position
         //can be considered "at" the target position (e.g. target postion +/- tolerance)
-        IntakeB.setTargetPositionTolerance(SampleSubsystemConstants.MOTOR_NAME_POSITION_TOLERANCE);
+        IntakeB.setTargetPositionTolerance(IntakeBConstants.INTAKE_POSITION_TOLERANCE);
 
         //Call setVelocity to tell the REV controller how fast you want to get to the target position
         IntakeB.setVelocity(SampleSubsystemConstants.MOTOR_NAME_VELOCITY_TICKS_PER_S);

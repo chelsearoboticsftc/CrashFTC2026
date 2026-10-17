@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
+import org.firstinspires.ftc.teamcode.Subsystems.IntakeConstants;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -29,25 +30,25 @@ public class Intake {
         this.Intake = hardwareMap.get(DcMotorEx.class,"Intake");
 
         //This defines the behavior at zero power (brake or coast)
-        Intake.setZeroPowerBehavior(SampleSubsystemConstants.MOTOR_NAME_ZERO_POWER_BEHAVIOR);
+        Intake.setZeroPowerBehavior(IntakeConstants.INTAKE_ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
-      Intake.setDirection(SampleSubsystemConstants.MOTOR_NAME_DIRECTION);
+      Intake.setDirection(IntakeConstants.INTAKE_DIRECTION);
 
         /* This defines the motor velocity PIDF gains.  Velocity PIDF values determine control    *
          * around a target velocity (setTargetVelocity) OR how fast the system responds to a      *
          * change in set position (setTargetPosition).                                            */
         Intake.setVelocityPIDFCoefficients(
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_P, //Proportional Gain
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_I, //Integral Gain
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_D, //Derivative Gain
-                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_F);//Feed Forward Gain
+                IntakeConstants.INTAKE_POSITION_P, //Proportional Gain
+                IntakeConstants.INTAKE_VELOCITY_I, //Integral Gain
+                IntakeConstants.INTAKE_VELOCITY_D, //Derivative Gain
+                IntakeConstants.INTAKE_VELOCITY_F);//Feed Forward Gain
 
         /* This defines the motor position PID P gain. Position control only needs P gain since   *
          * once the system reaches the target position since once at position you're only         *
          * disturbances in the system                                                             */
         Intake.setPositionPIDFCoefficients(
-                SampleSubsystemConstants.MOTOR_NAME_POSITION_P);//Proportional Gain
+                IntakeConstants.INTAKE_POSITION_P);//Proportional Gain
 
         //motorName.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -73,10 +74,10 @@ public class Intake {
 
         //Call setTargetPositionTolerance to tell REV controller how close to the target position
         //can be considered "at" the target position (e.g. target postion +/- tolerance)
-        Intake.setTargetPositionTolerance(SampleSubsystemConstants.MOTOR_NAME_POSITION_TOLERANCE);
+        Intake.setTargetPositionTolerance(IntakeConstants.INTAKE_POSITION_TOLERANCE);
 
         //Call setVelocity to tell the REV controller how fast you want to get to the target position
-        Intake.setVelocity(SampleSubsystemConstants.MOTOR_NAME_VELOCITY_TICKS_PER_S);
+        Intake.setVelocity(IntakeConstants.INTAKE_VELOCITY_TICKS_PER_S);
 
         //Call setTargetPosition to tell the REV controller the position you want to move to
         Intake.setTargetPosition(motorSetPosition);
