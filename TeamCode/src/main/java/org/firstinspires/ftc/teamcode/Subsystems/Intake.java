@@ -11,6 +11,7 @@ public class Intake {
 
     //Example declare a DcMotorEx object as part of this class called 'motorName'
     DcMotorEx Intake;
+    DcMotorEx IntakeB;
 
     //Declare any other global variables for this class here
     private int motorSetPosition = 0;
@@ -28,9 +29,12 @@ public class Intake {
 
         //Example code defining a DcMotor object to a motor in the config called "motorName"
         this.Intake = hardwareMap.get(DcMotorEx.class,"Intake");
+        this.IntakeB = hardwareMap.get(DcMotorEx.class,"IntakeB");
+
 
         //This defines the behavior at zero power (brake or coast)
         Intake.setZeroPowerBehavior(IntakeConstants.INTAKE_ZERO_POWER_BEHAVIOR);
+        IntakeB.setZeroPowerBehavior(IntakeConstants.INTAKE_ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
       Intake.setDirection(IntakeConstants.INTAKE_DIRECTION);
