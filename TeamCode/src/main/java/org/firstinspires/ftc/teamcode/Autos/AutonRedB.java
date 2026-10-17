@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.Autos;
 
 import static com.pedropathing.ivy.Scheduler.schedule;
+import static com.pedropathing.ivy.commands.Commands.instant;
+import static com.pedropathing.ivy.commands.Commands.waitMs;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 
@@ -8,6 +10,7 @@ import com.pedropathing.api.Paths;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.ivy.Command;
+import com.pedropathing.ivy.commands.Commands;
 import com.pedropathing.ivy.Scheduler;
 import com.pedropathing.math.Pose;
 import com.pedropathing.paths.Path;
@@ -15,6 +18,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake;
+import org.firstinspires.ftc.teamcode.Subsystems.IntakeB;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 
 @Autonomous
@@ -30,14 +36,23 @@ public class AutonRedB extends OpMode {
     private final Pose path3 = poseFactory.of(13.4062, 97.648, 90);
     private final Pose point3Control1 = poseFactory.of(5.0066, 72.9523, 0);
 
+    private ShooterPollen ShooterPollenFly;
+
     // Autonomous routine
     public Command autoRoutine() {
         return sequential(
                 follow(follower, path1()),
-                follow(follower, path2()),
-                follow(follower, path3())
-        );
-    }
+                instant (() -> ShooterPollenFly.setMotorVelocity(1200)),
+                waitMs(500),
+                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)),
+                instant (() -> intakeb.setMotorPower(-1)),
+                waitMs(200),
+                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)),
+                instant (() -> follow(follower, path2())),
+                instant (() -> follow(follower, path3()))
+                );
+
+    };
 
 
         public Path path1() {
@@ -52,10 +67,16 @@ public class AutonRedB extends OpMode {
             return Paths.curve(path2, point3Control1, path3).constant(path3);
         }
 
+    private Intake intake;
+    private IntakeB intakeb;
+
     @Override
     public void init() {
         Scheduler.reset();
         follower = PedroConstants.create(hardwareMap);
+         intake = new Intake(hardwareMap);
+         intakeb = new IntakeB(hardwareMap);
+        ShooterPollenFly = new ShooterPollen(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
     }
