@@ -34,8 +34,7 @@ public class Intake {
 
         //This defines the behavior at zero power (brake or coast)
         Intake.setZeroPowerBehavior(IntakeConstants.INTAKE_ZERO_POWER_BEHAVIOR);
-        Intake.setZeroPowerBehavior(SampleSubsystemConstants.MOTOR_NAME_ZERO_POWER_BEHAVIOR);
-        IntakeB.setZeroPowerBehavior(SampleSubsystemConstants.MOTOR_NAME_ZERO_POWER_BEHAVIOR);
+        IntakeB.setZeroPowerBehavior(IntakeConstants.INTAKE_ZERO_POWER_BEHAVIOR);
 
         //This defines the motor direction (forward or reversed)
       Intake.setDirection(IntakeConstants.INTAKE_DIRECTION);
