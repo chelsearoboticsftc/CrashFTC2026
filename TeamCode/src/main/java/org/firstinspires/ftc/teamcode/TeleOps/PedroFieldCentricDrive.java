@@ -68,8 +68,8 @@ public class PedroFieldCentricDrive extends OpMode {
 
 
             if (gamepad2.aWasPressed()) {
-                intake.setMotorPower(-1);
-                intakeb.setMotorPower(-1);
+                intake.setMotorPower(1);
+                intakeb.setMotorPower(1);
             }
 
             if (gamepad2.aWasReleased()) {
@@ -78,25 +78,49 @@ public class PedroFieldCentricDrive extends OpMode {
             }
             // Shooter stuff
 
-
-            if (gamepad2.yWasPressed()) {
-                ShooterPollenFly.setMotorVelocity(1200);
+            if (gamepad2.bWasPressed()) {
                 intakeb.setMotorPower(-1);
             }
 
-            if (gamepad2.yWasReleased()) {
+
+            if (gamepad2.bWasReleased()) {
+                intakeb.setMotorPower(0);
+            }
+
+            if (gamepad2.backWasPressed()) {
                 ShooterPollenFly.setMotorVelocity(0);
+            }
+
+//            if (gamepad2.right_trigger_pressed) {
+//                ShooterPollenFly.setMotorVelocity(1100);
+//            }
+//
+//            if (gamepad2.left_trigger_pressed) {
+//                ShooterPollenFly.setMotorVelocity(1000);
+//            }
+
+            if (gamepad2.yWasPressed()) {
+                ShooterPollenFly.setMotorVelocity(1200);
+                intakeb.setMotorPower(1);
+            }
+
+            if (gamepad2.yWasReleased()) {
+                ShooterPollenFly.setMotorVelocity(1000);
                 intakeb.setMotorPower(0);
             }
             if (gamepad2.xWasPressed()) {
-                ShooterPollenFly.setGatePollenPos(0.8);
+                ShooterPollenFly.setGatePollenPos(0.5);
             }
 //            if (gamepad2.dpadUpWasPressed()) {
 //            ShooterPollenFly.setGatePollenPos(0.2);
 //            }
             if (gamepad2.xWasReleased()) {
-            ShooterPollenFly.setGatePollenPos(0.5);
+            ShooterPollenFly.setGatePollenPos(0.8);
         }
+
+        telemetry.addData("speed", ShooterPollenFly.getVelocity());
+        telemetry.update();
+
 //            if (gamepad2.dpadDownWasPressed()) {
 //            ShooterPollenFly.setGatePollenPos(0.7);
 //        }
