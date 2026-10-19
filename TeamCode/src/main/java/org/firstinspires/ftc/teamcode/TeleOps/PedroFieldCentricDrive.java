@@ -6,6 +6,7 @@ import com.pedropathing.follower.ManualDrive;
 import com.pedropathing.math.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
@@ -26,6 +27,7 @@ public class PedroFieldCentricDrive extends OpMode {
 
    double GatePollenPos;
     private Follower follower;
+
 
     @Override
     public void start() {
@@ -59,7 +61,10 @@ public class PedroFieldCentricDrive extends OpMode {
             // On the fly Pose creation, Only accepts radians for heading
         //follower.setPose(cornerPose); // overrides our pose
 
-            Pose robotPose = follower.pose(); // returns a Pose object
+
+
+
+        Pose robotPose = follower.pose(); // returns a Pose object
             telemetry.addData("Robot X", robotPose.x());
             telemetry.addData("Robot Y", robotPose.y());
             telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
@@ -109,14 +114,13 @@ public class PedroFieldCentricDrive extends OpMode {
             if (gamepad2.yWasReleased()) {
                 ShooterPollenFly.setMotorVelocity(1000);
                 intakeb.setMotorPower(0);
+
             }
-            if (gamepad2.xWasPressed()) {
+            if (gamepad2.right_trigger_pressed) {
                 ShooterPollenFly.setGatePollenPos(0.5);
             }
-//            if (gamepad2.dpadUpWasPressed()) {
-//            ShooterPollenFly.setGatePollenPos(0.2);
-//            }
-            if (gamepad2.xWasReleased()) {
+
+            if (gamepad2.rightTriggerWasReleased()) {
             ShooterPollenFly.setGatePollenPos(0.8);
         }
 
