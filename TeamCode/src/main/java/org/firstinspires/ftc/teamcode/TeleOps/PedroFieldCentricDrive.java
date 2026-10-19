@@ -80,11 +80,13 @@ public class PedroFieldCentricDrive extends OpMode {
 
             if (gamepad2.bWasPressed()) {
                 intakeb.setMotorPower(-1);
+                intake.setMotorPower(-1);
             }
 
 
             if (gamepad2.bWasReleased()) {
                 intakeb.setMotorPower(0);
+                intake.setMotorPower(0);
             }
 
             if (gamepad2.backWasPressed()) {

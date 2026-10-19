@@ -45,7 +45,7 @@ public class AutonRedB extends OpMode {
                 instant (() -> ShooterPollenFly.setMotorVelocity(1200)),
                 waitMs(500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)),
-                instant (() -> intakeb.setMotorPower(-1)),
+                instant (() -> intakeb.setMotorPower(1)),
                 waitMs(200),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)),
                 instant (() -> follow(follower, path2())),
