@@ -29,10 +29,9 @@ public class AutonRedA extends OpMode {
     private ShooterPollen GatePollen;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(59.7237, 8.9309, 270);
-    private final Pose path1 = poseFactory.of(10.8503, 116.0592, 0);
-    private final Pose path1Control1 = poseFactory.of(3.6464, 34.4178, 180);
-
+    private final Pose start = poseFactory.of(56, 8, 90);
+    private final Pose path1 = poseFactory.of(14.1086, 116.9901, 0);
+    private final Pose path1Control1 = poseFactory.of(12.2796, 41.6431, 0);
     public Path path1() {
         return Paths.curve(start, path1Control1, path1).linear(start, path1);
     }
@@ -40,11 +39,6 @@ public class AutonRedA extends OpMode {
 
     private Command autoRoutine() {
         return sequential(
-                instant(() -> ShooterPollenFly.setMotorVelocity(2000)),
-                instant(() -> GatePollen.setGatePollenPos(0)),
-                waitMs(200),
-                instant(() -> ShooterPollenFly.setMotorVelocity(0)),
-                instant(() -> GatePollen.setGatePollenPos(2850)),
                 follow(follower, path1()));
                 // Add mechanism commands here.
     }
@@ -60,6 +54,7 @@ public class AutonRedA extends OpMode {
     public void start() {
         schedule(autoRoutine());
     }
+
     @Override
     public void loop() {
         follower.update();
