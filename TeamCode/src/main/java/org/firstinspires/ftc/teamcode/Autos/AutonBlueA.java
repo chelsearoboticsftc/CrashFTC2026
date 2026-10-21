@@ -27,12 +27,16 @@ public class AutonBlueA extends OpMode {
     private ShooterPollen GatePollen;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(80.5247, 128.6804, 90);
-    private final Pose path1 = poseFactory.of(131.7253, 27.6755, 180);
-    private final Pose path1Control1 = poseFactory.of(134.8701, 85.7089, 0);
+    private final Pose start = poseFactory.of(79.9454, 131.9512, 90);
+    private final Pose BlueAPath = poseFactory.of(129.9972, 28.3473, 180);
+    private final Pose path1Control1 = poseFactory.of(120.9143, 109.7572, 0);
+
+    public Path BlueAPath() {
+        return Paths.curve(start, path1Control1, BlueAPath).linear(start, BlueAPath);
+    }
 
     public Path path1() {
-        return Paths.curve(start, path1Control1, path1).linear(start, path1);
+        return Paths.curve(start, path1Control1, BlueAPath).linear(start, BlueAPath);
     }
 
 
