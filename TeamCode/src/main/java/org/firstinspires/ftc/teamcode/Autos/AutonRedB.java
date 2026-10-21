@@ -30,42 +30,33 @@ public class AutonRedB extends OpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(8.523, 34.9967, 90);
-    private final Pose path1 = poseFactory.of(60.6546, 9.0033, 90);
-    private final Pose path2 = poseFactory.of(30.472, 45.4836, 90);
-    private final Pose path3 = poseFactory.of(13.4062, 97.648, 90);
-    private final Pose point3Control1 = poseFactory.of(5.0066, 72.9523, 0);
+    private final Pose start = poseFactory.of(11.0335, 59.9796, 90);
+    private final Pose path1Start = poseFactory.of(11.0335, 59.9796, 0);
+    private final Pose path1 = poseFactory.of(10.2085, 99.5306, 0);
 
     private ShooterPollen ShooterPollenFly;
 
     // Autonomous routine
     public Command autoRoutine() {
         return sequential(
-                follow(follower, path1()),
-                instant (() -> ShooterPollenFly.setMotorVelocity(1200)),
-                waitMs(500),
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)),
-                instant (() -> intakeb.setMotorPower(1)),
-                waitMs(200),
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)),
-                instant (() -> follow(follower, path2())),
-                instant (() -> follow(follower, path3()))
-                );
+                follow(follower, path1()));
+//                instant (() -> ShooterPollenFly.setMotorVelocity(1200)),
+//                waitMs(500),
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)),
+//                instant (() -> intakeb.setMotorPower(1)),
+//                waitMs(200),
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)),
+//                instant (() -> follow(follower, path2())),
+//                instant (() -> follow(follower, path3()))
+        
 
     };
 
 
-        public Path path1() {
-            return Paths.line(start, path1).constant(path1);
-        }
+    public Path path1() {
+        return Paths.line(path1Start, path1).linear(path1Start, path1);
+    }
 
-        public Path path2() {
-            return Paths.line(path1, path2).constant(path2);
-        }
-
-        public Path path3() {
-            return Paths.curve(path2, point3Control1, path3).constant(path3);
-        }
 
     private Intake intake;
     private IntakeB intakeb;
