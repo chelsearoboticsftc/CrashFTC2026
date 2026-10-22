@@ -33,7 +33,7 @@ public class AutonRedA extends OpMode {
     private final Pose path1 = poseFactory.of(14.1086, 116.9901, 0);
     private final Pose path1Control1 = poseFactory.of(12.2796, 41.6431, 0);
     public Path path1() {
-        return Paths.curve(start, path1Control1, path1).linear(start, path1);
+        return Paths.line(start, path1).linear(start, path1);
     }
 
 

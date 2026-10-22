@@ -68,6 +68,9 @@ public class PedroFieldCentricDrive extends OpMode {
         telemetry.addData("Robot Y", robotPose.y());
         telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
         telemetry.addData("Servo Position", ShooterPollenFly.getGatePollenPos());
+        telemetry.addData("Shooter Vel", ShooterPollenFly.getVelocity());
+        telemetry.update();
+
         // Intake stuff
 
 
@@ -96,19 +99,31 @@ public class PedroFieldCentricDrive extends OpMode {
         if (gamepad2.backWasPressed()) {
             ShooterPollenFly.setMotorVelocity(0);
         }
-        
 
-        if (gamepad2.leftTriggerWasPressed()) {
-            ShooterPollenFly.setMotorVelocity(1200);
-            intakeb.setMotorPower(1);
+
+//        if (gamepad2.leftTriggerWasPressed()) {
+//            ShooterPollenFly.setMotorVelocity(1950);
+//           // intakeb.setMotorPower(1);
+//        }
+
+        if (gamepad2.dpad_down) {
+            ShooterPollenFly.setMotorVelocity(1400);
+        }
+        if (gamepad2.dpad_up) {
+            ShooterPollenFly.setMotorVelocity(1650);
+        }
+        if (gamepad2.dpad_left) {
+            ShooterPollenFly.setMotorVelocity(500);
+        }
+        if (gamepad2.dpad_right) {
+            ShooterPollenFly.setMotorVelocity(500);
         }
 
-
-        if (gamepad2.leftTriggerWasReleased()) {
-            ShooterPollenFly.setMotorVelocity(1000);
-            intakeb.setMotorPower(0);
-
-        }
+//        if (gamepad2.leftTriggerWasReleased()) {
+//            ShooterPollenFly.setMotorVelocity(500);
+//            intakeb.setMotorPower(0);
+//
+//        }
         if (gamepad2.rightTriggerWasPressed()) {
             ShooterPollenFly.setGatePollenPos(0.5);
         }
