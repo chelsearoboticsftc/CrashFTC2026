@@ -14,6 +14,9 @@ public class ShooterPollen {
     DcMotorEx FlywheelPollen;
     Servo ServoPollen;
     double ServoPose;
+    Servo ServoHood;
+    double HoodPose;
+
 
     //Declare any other global variables for this class here
     private final LookupTable distanceToVelocity = new LookupTable(ShooterConstantPollen.LOOKUP_TABLE);
@@ -21,6 +24,7 @@ public class ShooterPollen {
     public ShooterPollen(HardwareMap hardwareMap){
         this.FlywheelPollen = hardwareMap.get(DcMotorEx.class, ShooterConstantPollen.MOTOR_NAME);
         this.ServoPollen = hardwareMap.get(Servo.class, ShooterConstantPollen.SERVO_NAME);
+        this.ServoHood = hardwareMap.get(Servo.class, ShooterConstantPollen.SERVO_NAMEB);
 
         //This defines the behavior at zero power (brake or coast)
         FlywheelPollen.setZeroPowerBehavior(ShooterConstantPollen.ZERO_POWER_BEHAVIOR);
@@ -80,6 +84,10 @@ public class ShooterPollen {
         ServoPollen.setPosition(pos);
         ServoPose = pos;
 
+    }
+    public void setHoodPose(double pos) {
+        ServoHood.setPosition(pos);
+        HoodPose = pos;
     }
 
     public double getGatePollenPos(){

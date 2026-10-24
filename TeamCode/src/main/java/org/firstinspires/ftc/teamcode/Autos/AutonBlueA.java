@@ -23,30 +23,30 @@ import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 @Autonomous
 public class AutonBlueA extends OpMode {
     private Follower follower;
-    private ShooterPollen ShooterPollenFly;
-    private ShooterPollen GatePollen;
+//    private ShooterPollen ShooterPollenFly;
+//    private ShooterPollen GatePollen;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(79.9454, 131.9512, 90);
-    private final Pose BlueAPath = poseFactory.of(129.9972, 28.3473, 180);
-    private final Pose path1Control1 = poseFactory.of(120.9143, 109.7572, 0);
 
-    public Path BlueAPath() {
-        return Paths.curve(start, path1Control1, BlueAPath).linear(start, BlueAPath);
-    }
+
+    private final Pose start = poseFactory.of(82.6265, 133.2034, 180);
+    private final Pose path1Start = poseFactory.of(82.6265, 133.2034, 180);
+    private final Pose path1 = poseFactory.of(131.6703, 12.9257, 180);
+    private final Pose path1Control1 = poseFactory.of(138.8993, 123.0072, 0);
+
 
     public Path path1() {
-        return Paths.curve(start, path1Control1, BlueAPath).linear(start, BlueAPath);
+        return Paths.curve(path1Start, path1Control1, path1).linear(path1Start, path1);
     }
 
 
     private Command autoRoutine() {
         return sequential(
-                instant(() -> ShooterPollenFly.setMotorVelocity(2000)),
-                instant(() -> GatePollen.setGatePollenPos(0)),
-                waitMs(200),
-                instant(() -> ShooterPollenFly.setMotorVelocity(0)),
-                instant(() -> GatePollen.setGatePollenPos(2850)),
+//                instant(() -> ShooterPollenFly.setMotorVelocity(2000)),
+//                instant(() -> GatePollen.setGatePollenPos(0)),
+//                waitMs(200),
+//                instant(() -> ShooterPollenFly.setMotorVelocity(0)),
+//                instant(() -> GatePollen.setGatePollenPos(2850)),
                 follow(follower, path1()));
         // Add mechanism commands here.
     }

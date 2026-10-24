@@ -25,9 +25,11 @@ public class PedroFieldCentricDrive extends OpMode {
     private ShooterNectar ShooterNectarFly;
     private ShooterNectar GateNectar;
     private ShooterPollen ShooterPollenFly;
+    private ShooterPollen Hood;
     private boolean intakedB;
 
     double GatePollenPos;
+    double HoodPos;
     private Follower follower;
 
 
@@ -45,6 +47,7 @@ public class PedroFieldCentricDrive extends OpMode {
         intake = new Intake(hardwareMap);
         intakeb = new IntakeB(hardwareMap);
         ShooterPollenFly = new ShooterPollen(hardwareMap);
+        Hood = new ShooterPollen(hardwareMap);
 
     }
 
@@ -107,16 +110,16 @@ public class PedroFieldCentricDrive extends OpMode {
 
 
         if (gamepad2.dpad_down) {
-            ShooterPollenFly.setMotorVelocity(500);
+            Hood.setHoodPose(0);
         }
         if (gamepad2.dpad_up) {
-            ShooterPollenFly.setMotorVelocity(1300);
+            Hood.setHoodPose(1);
         }
         if (gamepad2.dpad_left) {
-            ShooterPollenFly.setMotorVelocity(1200);
+            Hood.setHoodPose(0.8);
         }
         if (gamepad2.dpad_right) {
-            ShooterPollenFly.setMotorVelocity(1400);
+            Hood.setHoodPose(0.3);
         }
 
 
@@ -129,7 +132,11 @@ public class PedroFieldCentricDrive extends OpMode {
         }
 
         if (gamepad2.leftTriggerWasPressed()) {
-            ShooterPollenFly.setMotorVelocity(1400);
+            ShooterPollenFly.setMotorVelocity(1265);
+        }
+
+        if (gamepad2.leftTriggerWasReleased()) {
+            ShooterPollenFly.setMotorVelocity(500);
         }
 
 
@@ -138,23 +145,25 @@ public class PedroFieldCentricDrive extends OpMode {
 
         if (gamepad2.xWasPressed()) {
 
-            if (intakedB = false) {
-                intakeb.setMotorPower(0);
-            }
-
-            if (intakedB = true) {
-                intakeb.setMotorPower(1);
-            }
+            intakeb.setMotorPower(1);
+//            if (intakedB = false) {
+//                intakeb.setMotorPower(0);
+//            }
+//
+//            if (intakedB = true) {
+//                intakeb.setMotorPower(1);
+//            }
 
             }
         if (gamepad2.xWasReleased()) {
 
-            if (intakedB = false) {
-                intakedB = true;
-            }
-            if (intakedB = true) {
-                intakedB = false;
-            }
+            intakeb.setMotorPower(0);
+//            if (intakedB = false) {
+//                intakedB = true;
+//            }
+//            if (intakedB = true) {
+//                intakedB = false;
+//            }
 
         }
 
