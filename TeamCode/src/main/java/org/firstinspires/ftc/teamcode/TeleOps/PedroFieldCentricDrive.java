@@ -25,6 +25,7 @@ public class PedroFieldCentricDrive extends OpMode {
     private ShooterNectar ShooterNectarFly;
     private ShooterNectar GateNectar;
     private ShooterPollen ShooterPollenFly;
+    private boolean intakedB;
 
     double GatePollenPos;
     private Follower follower;
@@ -35,6 +36,7 @@ public class PedroFieldCentricDrive extends OpMode {
         follower.setPose(OpModeStorage.autoEndPose);
         follower.update();
         GatePollenPos = 0;
+        intakedB = true;
     }
 
     @Override
@@ -57,11 +59,11 @@ public class PedroFieldCentricDrive extends OpMode {
         follower.manual(powers);
         follower.update();
         // relocalise button
-        //if (gamepad1.startWasPressed()) {
-        //Pose cornerPose = new Pose(0, 0, Math.toRadians(90));
-        // On the fly Pose creation, Only accepts radians for heading
-        //follower.setPose(cornerPose); // overrides our pose
-
+        if (gamepad1.startWasPressed()) {
+            Pose cornerPose = new Pose(0, 0, Math.toRadians(90));
+            // On the fly Pose creation, Only accepts radians for heading
+            follower.setPose(cornerPose); // overrides our pose
+        }
 
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());
@@ -83,7 +85,8 @@ public class PedroFieldCentricDrive extends OpMode {
             intake.setMotorPower(0);
             intakeb.setMotorPower(0);
         }
-        // Shooter stuff
+
+       // takey outy stuff
 
         if (gamepad2.bWasPressed()) {
             intakeb.setMotorPower(-1);
@@ -96,34 +99,27 @@ public class PedroFieldCentricDrive extends OpMode {
             intake.setMotorPower(0);
         }
 
+        // Shooter stuff
+
         if (gamepad2.backWasPressed()) {
             ShooterPollenFly.setMotorVelocity(0);
         }
 
 
-//        if (gamepad2.leftTriggerWasPressed()) {
-//            ShooterPollenFly.setMotorVelocity(1950);
-//           // intakeb.setMotorPower(1);
-//        }
-
         if (gamepad2.dpad_down) {
-            ShooterPollenFly.setMotorVelocity(1400);
+            ShooterPollenFly.setMotorVelocity(500);
         }
         if (gamepad2.dpad_up) {
-            ShooterPollenFly.setMotorVelocity(1650);
+            ShooterPollenFly.setMotorVelocity(1300);
         }
         if (gamepad2.dpad_left) {
-            ShooterPollenFly.setMotorVelocity(500);
+            ShooterPollenFly.setMotorVelocity(1200);
         }
         if (gamepad2.dpad_right) {
-            ShooterPollenFly.setMotorVelocity(500);
+            ShooterPollenFly.setMotorVelocity(1400);
         }
 
-//        if (gamepad2.leftTriggerWasReleased()) {
-//            ShooterPollenFly.setMotorVelocity(500);
-//            intakeb.setMotorPower(0);
-//
-//        }
+
         if (gamepad2.rightTriggerWasPressed()) {
             ShooterPollenFly.setGatePollenPos(0.5);
         }
@@ -132,6 +128,35 @@ public class PedroFieldCentricDrive extends OpMode {
             ShooterPollenFly.setGatePollenPos(0.8);
         }
 
+        if (gamepad2.leftTriggerWasPressed()) {
+            ShooterPollenFly.setMotorVelocity(1400);
+        }
 
+
+        // Intake B toggle
+
+
+        if (gamepad2.xWasPressed()) {
+
+            if (intakedB = false) {
+                intakeb.setMotorPower(0);
+            }
+
+            if (intakedB = true) {
+                intakeb.setMotorPower(1);
+            }
+
+            }
+        if (gamepad2.xWasReleased()) {
+
+            if (intakedB = false) {
+                intakedB = true;
+            }
+            if (intakedB = true) {
+                intakedB = false;
+            }
+
+        }
+
+        }
     }
-}
