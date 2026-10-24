@@ -34,7 +34,7 @@ public class AutonRedB extends OpMode {
     private final Pose path1Start = poseFactory.of(11.0335, 59.9796, 0);
     private final Pose path1 = poseFactory.of(10.2085, 99.5306, 0);
 
-    private ShooterPollen ShooterPollenFly;
+//    private ShooterPollen ShooterPollenFly;
 
     // Autonomous routine
     public Command autoRoutine() {
@@ -58,16 +58,16 @@ public class AutonRedB extends OpMode {
     }
 
 
-    private Intake intake;
-    private IntakeB intakeb;
+//    private Intake intake;
+//    private IntakeB intakeb;
 
     @Override
     public void init() {
         Scheduler.reset();
         follower = PedroConstants.create(hardwareMap);
-         intake = new Intake(hardwareMap);
-         intakeb = new IntakeB(hardwareMap);
-        ShooterPollenFly = new ShooterPollen(hardwareMap);
+//         intake = new Intake(hardwareMap);
+//         intakeb = new IntakeB(hardwareMap);
+//        ShooterPollenFly = new ShooterPollen(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
     }
