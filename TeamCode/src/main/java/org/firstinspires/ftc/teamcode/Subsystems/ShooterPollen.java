@@ -92,6 +92,8 @@ public class ShooterPollen {
 
     public double getGatePollenPos(){
         return ServoPose; }
-
+    public double getHoodPose(){
+        return HoodPose;
+    }
 }
 

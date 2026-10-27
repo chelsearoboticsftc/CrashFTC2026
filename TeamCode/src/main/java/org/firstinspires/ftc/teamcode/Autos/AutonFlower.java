@@ -3,9 +3,6 @@ package org.firstinspires.ftc.teamcode.Autos;
 import com.pedropathing.api.Paths;
 import com.pedropathing.ivy.Command;
 
-import static com.pedropathing.ivy.commands.Commands.instant;
-import static com.pedropathing.ivy.commands.Commands.waitMs;
-import static com.pedropathing.ivy.pedro.PedroCommands.*;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.pedropathing.paths.Path;
@@ -20,10 +17,9 @@ import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
-import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
 
 @Autonomous
-public class AutonRedA extends OpMode {
+public class AutonFlower extends OpMode {
     private Follower follower;
     private ShooterPollen ShooterPollenFly;
     private ShooterPollen GatePollen;

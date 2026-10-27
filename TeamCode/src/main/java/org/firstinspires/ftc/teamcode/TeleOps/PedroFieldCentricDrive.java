@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import static com.pedropathing.ivy.commands.Commands.waitMs;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
+import org.firstinspires.ftc.teamcode.Subsystems.ShooterConstantNectar;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterNectar;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
@@ -47,8 +48,6 @@ public class PedroFieldCentricDrive extends OpMode {
         intake = new Intake(hardwareMap);
         intakeb = new IntakeB(hardwareMap);
         ShooterPollenFly = new ShooterPollen(hardwareMap);
-        Hood = new ShooterPollen(hardwareMap);
-
     }
 
     @Override
@@ -74,6 +73,7 @@ public class PedroFieldCentricDrive extends OpMode {
         telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
         telemetry.addData("Servo Position", ShooterPollenFly.getGatePollenPos());
         telemetry.addData("Shooter Vel", ShooterPollenFly.getVelocity());
+        telemetry.addData("Hood Pos", ShooterPollenFly.getHoodPose());
         telemetry.update();
 
         // Intake stuff
@@ -110,16 +110,10 @@ public class PedroFieldCentricDrive extends OpMode {
 
 
         if (gamepad2.dpad_down) {
-            Hood.setHoodPose(0);
+          ShooterPollenFly.setHoodPose(1);
         }
         if (gamepad2.dpad_up) {
-            Hood.setHoodPose(1);
-        }
-        if (gamepad2.dpad_left) {
-            Hood.setHoodPose(0.8);
-        }
-        if (gamepad2.dpad_right) {
-            Hood.setHoodPose(0.3);
+            ShooterPollenFly.setHoodPose(0.85);
         }
 
 
