@@ -25,11 +25,11 @@ public class AutonFlower extends OpMode {
     private ShooterPollen GatePollen;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(56, 8, 90);
-    private final Pose path1 = poseFactory.of(17.8214, 130.5833, 0);
-    private final Pose path1Control1 = poseFactory.of(4.8539, 33.3924, 0);
+    private final Pose start = poseFactory.of(9.3003, 57.5017, 0);
+    private final Pose path1 = poseFactory.of(14.2085, 116.7904, 0);
+
     public Path path1() {
-        return Paths.curve(start, path1Control1, path1).linear(start, path1);
+        return Paths.curve(start, path1, path1).linear(start, path1);
     }
 
 
