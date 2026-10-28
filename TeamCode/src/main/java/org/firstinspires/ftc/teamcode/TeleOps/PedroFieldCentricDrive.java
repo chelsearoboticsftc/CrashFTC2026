@@ -126,11 +126,11 @@ public class PedroFieldCentricDrive extends OpMode {
         }
 
         if (gamepad2.leftTriggerWasPressed()) {
-            ShooterPollenFly.setMotorVelocity(1200);
+            ShooterPollenFly.setMotorVelocity(1500);
         }
 
         if (gamepad2.leftTriggerWasReleased()) {
-            ShooterPollenFly.setMotorVelocity(500);
+            ShooterPollenFly.setMotorVelocity(800);
         }
 
 

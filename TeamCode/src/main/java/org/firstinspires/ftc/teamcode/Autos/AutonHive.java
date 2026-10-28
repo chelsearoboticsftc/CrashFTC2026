@@ -35,7 +35,7 @@ public class AutonHive extends OpMode {
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose start = poseFactory.of(56, 5.3, 90);
-    private final Pose path1 = poseFactory.of(10.8315, 104.0696, 0);
+    private final Pose path1 = poseFactory.of(10.8315, 100.0006, 0);
     private final Pose path1Control1 = poseFactory.of(5.0933, 14.344, 0);
 
 //    private ShooterPollen ShooterPollenFly;
@@ -44,7 +44,7 @@ public class AutonHive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1265)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setMotorVelocity(1500)), // spinny spin fly fly
                 instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),
@@ -54,22 +54,21 @@ public class AutonHive extends OpMode {
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
                 waitMs(800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (800),
+                waitMs (1800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
                 waitMs(800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (800),
+                waitMs (1800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
                 waitMs(800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (800),
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
+                waitMs (1800),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
                 follow(follower, path1()));
 
 
-    };
+    }
 
 
     public Path path1() {
