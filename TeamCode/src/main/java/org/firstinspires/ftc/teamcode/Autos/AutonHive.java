@@ -44,7 +44,7 @@ public class AutonHive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1500)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setMotorVelocity(1400)), // spinny spin fly fly
                 instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),
