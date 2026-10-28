@@ -35,7 +35,7 @@ public class AutonHive extends OpMode {
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose start = poseFactory.of(56, 5.3, 90);
-    private final Pose path1 = poseFactory.of(10.8315, 98.0006, 0);
+    private final Pose path1 = poseFactory.of(10.8315, 9.0006, 0);
     private final Pose path1Control1 = poseFactory.of(5.0933, 14.344, 0);
 
 //    private ShooterPollen ShooterPollenFly;
