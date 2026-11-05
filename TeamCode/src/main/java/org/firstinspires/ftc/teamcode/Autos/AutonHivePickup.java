@@ -35,18 +35,22 @@ public class AutonHivePickup extends OpMode {
         return Paths.line(start, path1).constant(path1);
     }
 
-    public Path path2() {
+    public Path point2() {
         return Paths.line(path1, point2).constant(point2);
     }
 
-    public Path path3() {
+    public Path point3() {
         return Paths.curve(point2, point3Control1, point3).constant(point3);
     }
 
 
     private Command autoRoutine() {
         return sequential(
-                follow(follower, path1()));
+                follow(follower, path1()),
+                follow(follower, point2()),
+                follow(follower, point3()));
+
+
                 // Add mechanism commands here.
     }
 
