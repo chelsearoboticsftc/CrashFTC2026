@@ -31,9 +31,12 @@ public class AutonHiveFourtyFive extends OpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(31.495, 13.8552, 90);
-    private final Pose path1 = poseFactory.of(31.495, 13.8552, 45);
-    private final Pose point2 = poseFactory.of(11.654, 14.0217, 180);
+    private final Pose start = poseFactory.of(34.7479, 8.4337, 45);
+    private final Pose path1 = poseFactory.of(34.7119, 8.6759, 180);
+    private final Pose point2 = poseFactory.of(19.4853, 19.0181, 180);
+    private final Pose point3start = poseFactory.of(19.4853, 19.0181, 180);
+    private final Pose point3 = poseFactory.of(23.9807, 108.6124, 0);
+    private final Pose point3Control = poseFactory.of(62.2925, 43.6427, 0);
 
 //    private ShooterPollen ShooterPollenFly;
 
@@ -42,7 +45,7 @@ public class AutonHiveFourtyFive extends OpMode {
 
         return sequential(
                 instant (() -> ShooterPollenFly.setMotorVelocity(1200)), // spinny spin fly fly
-                instant (() -> ShooterPollenFly.setHoodPose(0.9)), // puty put uppy up hoody hood
+                instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
@@ -78,7 +81,9 @@ public class AutonHiveFourtyFive extends OpMode {
         return Paths.line(path1, point2).tangent();
     }
 
-
+    public Path path3() {
+        return Paths.curve(point3start, point3Control, point3).linear(point3start, point3);
+    }
 
 //    private Intake intake;
 //    private IntakeB intakeb;
