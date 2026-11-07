@@ -92,6 +92,9 @@ public class AutonHivePickup extends OpMode {
         follower = PedroConstants.create(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
+        intakeb = new IntakeB(hardwareMap);
+        intake = new Intake(hardwareMap);
+        ShooterPollenFly = new ShooterPollen(hardwareMap);
     }
     @Override
     public void start() {

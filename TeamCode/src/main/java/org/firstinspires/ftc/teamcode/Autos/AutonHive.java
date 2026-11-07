@@ -34,9 +34,11 @@ public class AutonHive extends OpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(56, 9, 90);
-    private final Pose path1 = poseFactory.of(20.4172, 126.4572, 0);
-    private final Pose path1Control1 = poseFactory.of(17.2374, 22.5847, 0);
+
+    private final Pose start = poseFactory.of(58.7851, 9.9715, 90);
+    private final Pose path1Start = poseFactory.of(58.7851, 9.9715, 90);
+    private final Pose path1 = poseFactory.of(12.5278, 124.8409, 0);
+    private final Pose path1Control1 = poseFactory.of(15.6593, 53.3244, 0);
 
 //    private ShooterPollen ShooterPollenFly;
 
@@ -44,22 +46,22 @@ public class AutonHive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1150)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setMotorVelocity(1550)), // spinny spin fly fly
                 instant (() -> ShooterPollenFly.setHoodPose(0.885)), // puty put uppy up hoody hood
                 waitMs(3000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 instant (() -> intakeb.setMotorPower(1)), // runny run intakey take
-                waitMs(1800),
+                waitMs(2000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(500),
+                waitMs(1500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(500),
+                waitMs(1500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(500),
+                waitMs(1500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1000),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
@@ -71,7 +73,7 @@ public class AutonHive extends OpMode {
 
 
     public Path path1() {
-        return Paths.curve(start, path1Control1, path1).linear(start, path1);
+        return Paths.curve(path1Start, path1Control1, path1).linear(path1Start, path1);
     }
 
 

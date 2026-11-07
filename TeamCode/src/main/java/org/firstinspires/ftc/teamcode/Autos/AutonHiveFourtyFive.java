@@ -31,12 +31,12 @@ public class AutonHiveFourtyFive extends OpMode {
 
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(34.7479, 8.4337, 45);
-    private final Pose path1 = poseFactory.of(34.7119, 8.6759, 180);
-    private final Pose point2 = poseFactory.of(19.4853, 19.0181, 180);
-    private final Pose point3start = poseFactory.of(19.4853, 19.0181, 180);
-    private final Pose point3 = poseFactory.of(23.9807, 108.6124, 0);
-    private final Pose point3Control = poseFactory.of(62.2925, 43.6427, 0);
+
+
+
+    private final Pose start = poseFactory.of(35.6544, 10.6609, 45);
+    private final Pose point1 = poseFactory.of(12.1104, 116.0436, 270);
+    private final Pose point1Control1 = poseFactory.of(19.1406, 37.1819, 0);
 
 //    private ShooterPollen ShooterPollenFly;
 
@@ -44,7 +44,7 @@ public class AutonHiveFourtyFive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1200)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setMotorVelocity(1550)), // spinny spin fly fly
                 instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),
@@ -65,25 +65,15 @@ public class AutonHiveFourtyFive extends OpMode {
                 waitMs (3000),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
-                follow(follower, path1()),
-                follow(follower, path2()),
-                follow(follower, path3()));
-
+                follow(follower, path1()));
 
     }
 
 
     public Path path1() {
-        return Paths.line(start,path1).linear(start, path1);
+        return Paths.curve(start, point1Control1, point1).reverseTangent();
     }
 
-    public Path path2() {
-        return Paths.line(path1, point2).tangent();
-    }
-
-    public Path path3() {
-        return Paths.curve(point3start, point3Control, point3).linear(point3start, point3);
-    }
 
 //    private Intake intake;
 //    private IntakeB intakeb;
@@ -113,7 +103,7 @@ public class AutonHiveFourtyFive extends OpMode {
     @Override
     public void stop() {
         OpModeStorage.autoEndPose = follower.pose(); //saves your position in that file
-    }
+     }
     }
 
 

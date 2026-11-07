@@ -48,6 +48,7 @@ public class PedroFieldCentricDrive extends OpMode {
         intake = new Intake(hardwareMap);
         intakeb = new IntakeB(hardwareMap);
         ShooterPollenFly = new ShooterPollen(hardwareMap);
+        ShooterPollenFly.setGatePollenPos(0.8);
     }
 
     @Override
@@ -113,7 +114,7 @@ public class PedroFieldCentricDrive extends OpMode {
           ShooterPollenFly.setHoodPose(1);
         }
         if (gamepad2.dpad_up) {
-            ShooterPollenFly.setHoodPose(0.885);
+            ShooterPollenFly.setHoodPose(0.85);
         }
 
 
@@ -126,7 +127,7 @@ public class PedroFieldCentricDrive extends OpMode {
         }
 
         if (gamepad2.leftTriggerWasPressed()) {
-            ShooterPollenFly.setMotorVelocity(1200);
+            ShooterPollenFly.setMotorVelocity(1550);
         }
 
         if (gamepad2.leftTriggerWasReleased()) {
@@ -134,31 +135,15 @@ public class PedroFieldCentricDrive extends OpMode {
         }
 
 
-        // Intake B toggle
+        // Intake B
 
 
         if (gamepad2.xWasPressed()) {
-
             intakeb.setMotorPower(1);
-//            if (intakedB = false) {
-//                intakeb.setMotorPower(0);
-//            }
-//
-//            if (intakedB = true) {
-//                intakeb.setMotorPower(1);
-//            }
-
             }
+
         if (gamepad2.xWasReleased()) {
-
             intakeb.setMotorPower(0);
-//            if (intakedB = false) {
-//                intakedB = true;
-//            }
-//            if (intakedB = true) {
-//                intakedB = false;
-//            }
-
         }
 
         }
