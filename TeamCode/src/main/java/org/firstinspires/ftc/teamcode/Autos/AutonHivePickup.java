@@ -18,6 +18,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.IntakeB;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 
@@ -25,6 +26,7 @@ import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 public class AutonHivePickup extends OpMode {
     private Follower follower;
     private IntakeB intakeb;
+    private Intake intake;
     private ShooterPollen ShooterPollenFly;
     private ShooterPollen GatePollen;
     private final PoseFactory poseFactory = PoseFactory.degrees();
@@ -71,10 +73,13 @@ public class AutonHivePickup extends OpMode {
                 waitMs (3000),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
+                instant (() -> intake.setMotorPower(0)),
                 follow(follower, path1()),
                 instant (() -> intakeb.setMotorPower(1)),
+                instant (() -> intake.setMotorPower(1)),
                 follow(follower, point2()),
                 instant (() -> intakeb.setMotorPower(0)),
+                instant (() -> intake.setMotorPower(0)),
                 follow(follower, point3()));
 
 
