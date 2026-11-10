@@ -35,10 +35,10 @@ public class AutonHive extends OpMode {
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
 
-    private final Pose start = poseFactory.of(58.7851, 9.9715, 90);
-    private final Pose path1Start = poseFactory.of(58.7851, 9.9715, 90);
-    private final Pose path1 = poseFactory.of(12.5278, 124.8409, 0);
-    private final Pose path1Control1 = poseFactory.of(15.6593, 53.3244, 0);
+
+    private final Pose start = poseFactory.of(56, 8, 90);
+    private final Pose path1 = poseFactory.of(21.575, 102.0557, 0);
+    private final Pose path1Control1 = poseFactory.of(12.5182, 54.1523, 0);
 
 //    private ShooterPollen ShooterPollenFly;
 
@@ -66,6 +66,7 @@ public class AutonHive extends OpMode {
                 waitMs (1000),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
+                waitMs(3000),
                 follow(follower, path1()));
 
 
@@ -73,7 +74,7 @@ public class AutonHive extends OpMode {
 
 
     public Path path1() {
-        return Paths.curve(path1Start, path1Control1, path1).linear(path1Start, path1);
+        return Paths.curve(start, path1Control1, path1).linear(start, path1);
     }
 
 
@@ -84,9 +85,6 @@ public class AutonHive extends OpMode {
     public void init() {
         Scheduler.reset();
         follower = PedroConstants.create(hardwareMap);
-//         intake = new Intake(hardwareMap);
-//         intakeb = new IntakeB(hardwareMap);
-//        ShooterPollenFly = new ShooterPollen(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
         intakeb = new IntakeB(hardwareMap);
@@ -104,8 +102,8 @@ public class AutonHive extends OpMode {
 
     @Override
     public void stop() {
-        OpModeStorage.autoEndPose = follower.pose(); //saves your position in that file
-    }
+       OpModeStorage.autoEndPose = follower.pose(); //saves your position in that file
+        }
     }
 
 

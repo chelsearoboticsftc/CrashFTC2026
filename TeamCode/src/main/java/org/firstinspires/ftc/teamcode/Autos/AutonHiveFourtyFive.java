@@ -34,9 +34,11 @@ public class AutonHiveFourtyFive extends OpMode {
 
 
 
+
     private final Pose start = poseFactory.of(35.6544, 10.6609, 45);
-    private final Pose point1 = poseFactory.of(12.1104, 116.0436, 180);
-    private final Pose point1Control1 = poseFactory.of(50.4709, 139.9042, 0);
+    private final Pose point1 = poseFactory.of(48.8825, 121.0732, 360);
+    private final Pose point1Control1 = poseFactory.of(58.4065, 121.3505, 0);
+
 
 //    private ShooterPollen ShooterPollenFly;
 
@@ -44,7 +46,7 @@ public class AutonHiveFourtyFive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1450)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setMotorVelocity(1400)), // spinny spin fly fly
                 instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),
@@ -65,13 +67,14 @@ public class AutonHiveFourtyFive extends OpMode {
                 waitMs (3000),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
+                waitMs(3000),
                 follow(follower, path1()));
 
     }
 
 
     public Path path1() {
-        return Paths.curve(start, point1Control1, point1).reverseTangent();
+        return Paths.curve(start, point1Control1, point1).linear(start, point1);
     }
 
 

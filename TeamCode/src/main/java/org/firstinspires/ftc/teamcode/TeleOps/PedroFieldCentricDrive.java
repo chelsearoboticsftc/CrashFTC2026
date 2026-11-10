@@ -36,10 +36,11 @@ public class PedroFieldCentricDrive extends OpMode {
 
     @Override
     public void start() {
-        follower.setPose(OpModeStorage.autoEndPose);
+        follower.setPose(new Pose(0,0,0));
         follower.update();
         GatePollenPos = 0;
         intakedB = true;
+
     }
 
     @Override
@@ -63,9 +64,9 @@ public class PedroFieldCentricDrive extends OpMode {
         follower.update();
         // relocalise button
         if (gamepad1.startWasPressed()) {
-            Pose cornerPose = new Pose(0, 0, Math.toRadians(90));
+            Pose Aura = new Pose(0, 0, Math.toRadians(0));
             // On the fly Pose creation, Only accepts radians for heading
-            follower.setPose(cornerPose); // overrides our pose
+            follower.setPose(Aura); // overrides our pose
         }
 
         Pose robotPose = follower.pose(); // returns a Pose object
