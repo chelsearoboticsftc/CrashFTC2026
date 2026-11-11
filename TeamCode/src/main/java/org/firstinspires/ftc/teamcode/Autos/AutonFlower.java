@@ -26,7 +26,7 @@ public class AutonFlower extends OpMode {
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose start = poseFactory.of(9.3003, 57.5017, 0);
-    private final Pose path1 = poseFactory.of(12.2085, 110.7904, 0);
+    private final Pose path1 = poseFactory.of(12.2085, 102.3790, 0);
 
     public Path path1() {
         return Paths.curve(start, path1, path1).linear(start, path1);
