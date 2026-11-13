@@ -18,71 +18,52 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.IntakeB;
-import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Subsystems.ShooterPollen;
 import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 
 @Autonomous
-public class AutonHivePickup extends OpMode {
+public class AutonFlowerWait extends OpMode {
     private Follower follower;
-    private IntakeB intakeb;
-    private Intake intake;
     private ShooterPollen ShooterPollenFly;
     private ShooterPollen GatePollen;
+    private IntakeB intakeb;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(56, 8, 90);
-    private final Pose path1 = poseFactory.of(52.3134, 7.8084, 90);
-    private final Pose point2 = poseFactory.of(9.4764, 8.4932, 180);
-    private final Pose point3 = poseFactory.of(9.3279, 94.806, 180);
-    private final Pose point3Control1 = poseFactory.of(53.6694, 59.5792, 0);
+    private final Pose start = poseFactory.of(8.0743, 58.528, 90);
+    private final Pose path1 = poseFactory.of(61.2046, 24.7234, 90);
+    private final Pose point2 = poseFactory.of(30.5741, 135.4155, 0);
+    private final Pose point2control1 = poseFactory.of(15.9545, 15.2753, 0);
 
-    public Path path1() {
-        return Paths.line(start, path1).constant(path1);
-    }
+    public Path path1() {return Paths.line(start, path1).constant(path1);}
 
-    public Path point2() {
-        return Paths.line(path1, point2).constant(point2);
-    }
-
-    public Path point3() {
-        return Paths.curve(point2, point3Control1, point3).constant(point3);
-    }
-
+    public Path path2() {return Paths.curve(path1, point2control1, point2).constant(point2);}
 
     private Command autoRoutine() {
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1200)), // spinny spin fly fly
-                instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
-                waitMs(2000),
+                waitMs(3000),
+                follow(follower, path1()),
+        instant (() -> ShooterPollenFly.setMotorVelocity(1450)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setHoodPose(0.7)), // puty put uppy up hoody hood
+                waitMs(3000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 instant (() -> intakeb.setMotorPower(1)), // runny run intakey take
-                waitMs(800),
+                waitMs(2000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(300),
+                waitMs(1500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(200),
+                waitMs(1500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1800),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(200),
+                waitMs(1500),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (3000),
+                waitMs (1000),
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
-                instant (() -> intake.setMotorPower(0)),
-                follow(follower, path1()),
-                instant (() -> intakeb.setMotorPower(1)),
-                instant (() -> intake.setMotorPower(1)),
-                follow(follower, point2()),
-                instant (() -> intakeb.setMotorPower(0)),
-                instant (() -> intake.setMotorPower(0)),
-                follow(follower, point3()));
-
-
+                waitMs(3000),
+                follow(follower, path2()));
                 // Add mechanism commands here.
     }
 
@@ -90,11 +71,10 @@ public class AutonHivePickup extends OpMode {
     public void init() {
         Scheduler.reset();
         follower = PedroConstants.create(hardwareMap);
+        ShooterPollenFly = new ShooterPollen(hardwareMap);
+        intakeb = new IntakeB(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
-        intakeb = new IntakeB(hardwareMap);
-        intake = new Intake(hardwareMap);
-        ShooterPollenFly = new ShooterPollen(hardwareMap);
     }
     @Override
     public void start() {
@@ -110,8 +90,5 @@ public class AutonHivePickup extends OpMode {
     @Override
     public void stop() {
         OpModeStorage.autoEndPose = follower.pose(); //saves your position in that file
+        }
     }
-
-
-
-}
