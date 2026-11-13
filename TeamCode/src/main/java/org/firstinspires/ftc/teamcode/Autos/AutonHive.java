@@ -31,7 +31,6 @@ public class AutonHive extends OpMode {
     private IntakeB intakeb;
     private Follower follower;
 
-
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
 
@@ -46,7 +45,7 @@ public class AutonHive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1450)), // spinny spin fly fly
+                instant (() -> ShooterPollenFly.setMotorVelocity(1400)), // spinny spin flyy fly
                 instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 waitMs(3000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
