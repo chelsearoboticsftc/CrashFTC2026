@@ -46,8 +46,8 @@ public class AutonHiveFourtyFive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1425)), // spinny spin fly flyy
-                instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
+                instant (() -> ShooterPollenFly.setMotorVelocity(1350)), // spinny spin fly flyy
+                instant (() -> ShooterPollenFly.setHoodPose(0.82)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
@@ -58,11 +58,11 @@ public class AutonHiveFourtyFive extends OpMode {
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1800),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(200),//stop stopy wait waity
+                waitMs(300),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (1800),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(200),//stop stopy wait waity
+                waitMs(400),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 waitMs (3000),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly

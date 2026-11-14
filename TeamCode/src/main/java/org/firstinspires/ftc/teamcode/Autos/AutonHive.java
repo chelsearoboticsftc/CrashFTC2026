@@ -46,7 +46,7 @@ public class AutonHive extends OpMode {//
 
         return sequential(
                 instant (() -> ShooterPollenFly.setMotorVelocity(1400)), // spinny spin flyy fly
-                instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
+                instant (() -> ShooterPollenFly.setHoodPose(0.85)), // puty put uppy up hoody hood
                 waitMs(3000),
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 instant (() -> intakeb.setMotorPower(1)), // runny run intakey take
