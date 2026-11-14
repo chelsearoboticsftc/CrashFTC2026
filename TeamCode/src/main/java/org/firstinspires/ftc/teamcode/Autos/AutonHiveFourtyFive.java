@@ -46,7 +46,7 @@ public class AutonHiveFourtyFive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1450)), // spinny spin fly flyy
+                instant (() -> ShooterPollenFly.setMotorVelocity(1425)), // spinny spin fly flyy
                 instant (() -> ShooterPollenFly.setHoodPose(0.8)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),//stop stopy wait waity
@@ -68,7 +68,7 @@ public class AutonHiveFourtyFive extends OpMode {
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
                 waitMs(3000),//stop stopy wait waity
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // closey close gatey gate
+                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 follow(follower, path1()));
 
     }
