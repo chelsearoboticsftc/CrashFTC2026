@@ -115,7 +115,7 @@ public class PedroFieldCentricDrive extends OpMode {
           ShooterPollenFly.setHoodPose(1);
         }
         if (gamepad2.dpad_up) {
-            ShooterPollenFly.setHoodPose(0.85);
+            ShooterPollenFly.setHoodPose(0.8);
         }
 
 
