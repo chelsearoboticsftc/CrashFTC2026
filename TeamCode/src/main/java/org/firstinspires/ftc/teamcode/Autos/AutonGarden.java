@@ -117,6 +117,9 @@ public class AutonGarden extends OpMode {
     public void init() {
         Scheduler.reset();
         follower = PedroConstants.create(hardwareMap);
+        ShooterPollenFly = new ShooterPollen(hardwareMap);
+        intakeb = new IntakeB(hardwareMap);
+        intake = new Intake(hardwareMap);
         follower.setPose(rotatePath);//sets the starting point of your Robot
         follower.update();
     }
