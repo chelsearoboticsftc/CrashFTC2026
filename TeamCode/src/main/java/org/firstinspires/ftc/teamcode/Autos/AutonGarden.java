@@ -35,7 +35,7 @@ public class AutonGarden extends OpMode {
     private final Pose rotatePath = poseFactory.of(81.8717, 131.0942, 270);
     private final Pose rotatePath_2 = poseFactory.of(81.3784, 120.3037, 0);
     private final Pose collectingPathStart = poseFactory.of(81.3784, 120.3037, 0);
-    private final Pose collectingPath = poseFactory.of(132.8338, 131.8942, 90);
+    private final Pose collectingPath = poseFactory.of(115, 95, 90);
     private final Pose collectingPathControl1 = poseFactory.of(135.7426, 92.1665, 0);
     private final Pose shootPositioningPathStart = poseFactory.of(132.8338, 131.8942, 90);
     private final Pose shootPositioningPath = poseFactory.of(82.0284, 133.5023, 270);
