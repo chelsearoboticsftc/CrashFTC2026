@@ -35,8 +35,8 @@ public class AutonHiveFourtyFive extends OpMode {
 
 
 
-    private final Pose start = poseFactory.of(35.6544, 10.6609, 45);
-    private final Pose point1 = poseFactory.of(47.9999, 118.0732, 360);
+    private final Pose start = poseFactory.of(35.6544, 10.6609, 225);
+    private final Pose point1 = poseFactory.of(36, 115.0732, 345);
     private final Pose point1Control1 = poseFactory.of(58.4065, 121.3505, 0);
 
 
@@ -46,7 +46,7 @@ public class AutonHiveFourtyFive extends OpMode {
     public Command autoRoutine() {
 
         return sequential(
-                instant (() -> ShooterPollenFly.setMotorVelocity(1350)), // spinny spin fly flyy
+                instant (() -> ShooterPollenFly.setMotorVelocity(1400)), // spinny spin fly flyy
                 instant (() -> ShooterPollenFly.setHoodPose(0.82)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),//stop stopy wait waity
@@ -54,20 +54,20 @@ public class AutonHiveFourtyFive extends OpMode {
                 instant (() -> intakeb.setMotorPower(1)), // runny run intakey take
                 waitMs(800),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(300),//stop stopy wait waity
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (1800),//stop stopy wait waity
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(300),//stop stopy wait waity
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (1800),//stop stopy wait waity
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
-                waitMs(400),//stop stopy wait waity
-                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
-                waitMs (3000),//stop stopy wait waity
+                waitMs(5000),//stop stopy wait waity
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
+//                waitMs (1800),//stop stopy wait waity
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
+//                waitMs(300),//stop stopy wait waity
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
+//                waitMs (1800),//stop stopy wait waity
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.5)), // openy open gatey gate
+//                waitMs(400),//stop stopy wait waity
+//                instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
+//                waitMs (3000),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setMotorVelocity(0)), // stopy stop flyy fly
                 instant (() -> intakeb.setMotorPower(0)),
-                waitMs(3000),//stop stopy wait waity
+//                waitMs(3000),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
                 follow(follower, path1()));
 

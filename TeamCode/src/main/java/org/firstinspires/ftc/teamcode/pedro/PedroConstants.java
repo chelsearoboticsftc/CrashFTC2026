@@ -48,8 +48,11 @@ public class PedroConstants {
                 c.forwardTranslational.set(Controller.piecewise(secondaryTranslationalForward).put(2.5, primaryTranslationalForward));
                 c.strafeTranslational.set(Controller.piecewise(secondaryTranslationalLateral).put(2.5, primaryTranslationalLateral));
 
-                c.coast.set(Controller.proportionalFeedforward(0.0138854118543755));
-                c.brake.set(Controller.proportionalFeedforward(0.011802600076219175));
+//                c.coast.set(Controller.proportionalFeedforward(0.0138854118543755));
+//                c.brake.set(Controller.proportionalFeedforward(0.011802600076219175));
+
+                c.coast.set(Controller.proportionalFeedforward(0.00138854118543755));
+                c.brake.set(Controller.proportionalFeedforward(0.0011802600076219175));
 
                 c.headingFeedback.set(Controller.proportional(7.573241630771392));
                 c.headingBrakeCoefficients.set(Vector2D.cartesian(0.04822590251229304, 0.006728464308620169));

@@ -23,7 +23,7 @@ import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 
 
 @Autonomous
-public class AutonClassic extends OpMode {
+public class AutonCool extends OpMode {
     private ShooterPollen ShooterPollenFly;
     private IntakeB intakeb;
     private Follower follower;
@@ -36,10 +36,10 @@ public class AutonClassic extends OpMode {
 
 
 
-    private final Pose start = poseFactory.of(105.6233, 11.3305, 125);
-    private final Pose point1 = poseFactory.of(104.5674, 19.1888, 180);
-    private final Pose point2 = poseFactory.of(128.0263, 19.4493, 180);
 
+    private final Pose start = poseFactory.of(107.3328, 9.3391, 300);
+    private final Pose path1 = poseFactory.of(107.7792, 22.3856, 180);
+    private final Pose point2 = poseFactory.of(127.4552, 21.9705, 178.7914);
 
 
 //    private ShooterPollen ShooterPollenFly;
@@ -49,8 +49,8 @@ public class AutonClassic extends OpMode {
 
         return sequential(
                 waitMs(15000),
-                instant (() -> ShooterPollenFly.setMotorVelocity(1375)), // spinny spin fly flyy
-                instant (() -> ShooterPollenFly.setHoodPose(0.79)), // puty put uppy up hoody hood
+                instant (() -> ShooterPollenFly.setMotorVelocity(1400)), // spinny spin fly flyy
+                //instant (() -> ShooterPollenFly.setHoodPose(0.79)), // puty put uppy up hoody hood
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // gatey gate
                 waitMs(2000),//stop stopy wait waity
                 instant (() -> ShooterPollenFly.setGatePollenPos(0.8)), // closey close gatey gate
@@ -80,12 +80,13 @@ public class AutonClassic extends OpMode {
 
 
     public Path path1() {
-        return Paths.line(start, point1).linear(start, point1);
+        return Paths.line(start, path1).linear(start, path1);
     }
 
     public Path path2() {
-        return Paths.line(point1, point2).constant(point2);
+        return Paths.line(path1, point2).reverseTangent();
     }
+
 
 
 //    private Intake intake;

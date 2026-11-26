@@ -14,6 +14,7 @@ import com.pedropathing.ivy.Scheduler;
 import com.pedropathing.math.Pose;
 import com.pedropathing.paths.Path;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
@@ -23,6 +24,7 @@ import org.firstinspires.ftc.teamcode.pedro.PedroConstants;
 
 
 @Autonomous
+@Disabled
 public class AutonHiveWait extends OpMode {//
     private ShooterPollen ShooterPollenFly;
     private IntakeB intakeb;
